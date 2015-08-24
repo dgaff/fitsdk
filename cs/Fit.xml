@@ -5531,6 +5531,26 @@
             <param name="index">0 based index of leader_activity_id</param>
             <param name="leaderActivityId_">Nullable field value to be set</param>      
         </member>
+        <member name="M:Dynastream.Fit.SegmentFileMesg.GetNumLeaderActivityIdString">
+            <summary>
+            
+            </summary>  
+            <returns>returns number of elements in field LeaderActivityIdString</returns>      
+        </member>
+        <member name="M:Dynastream.Fit.SegmentFileMesg.GetLeaderActivityIdString(System.Int32)">
+            <summary>      
+             Retrieves the LeaderActivityIdString field
+             Comment: String version of the activity ID of each leader in the segment file. 21 characters long for each ID, express in decimal</summary>
+             <param name="index">0 based index of LeaderActivityIdString element to retrieve</param>
+             <returns>Returns byte[] representing the LeaderActivityIdString field</returns>      
+        </member>
+        <member name="M:Dynastream.Fit.SegmentFileMesg.SetLeaderActivityIdString(System.Int32,System.Byte[])">
+            <summary>        
+            Set LeaderActivityIdString field
+            Comment: String version of the activity ID of each leader in the segment file. 21 characters long for each ID, express in decimal</summary>      
+            <param name="index">0 based index of leader_activity_id_string</param>
+            <param name="leaderActivityIdString_">field value to be set</param>      
+        </member>
         <member name="T:Dynastream.Fit.SegmentIdMesg">
             <summary>
             Implements the SegmentId profile message.
@@ -6870,6 +6890,18 @@
             Units: s
             Comment: Segment Time (includes pauses)</summary>
             <param name="segmentTime_">Nullable field value to be set</param>      
+        </member>
+        <member name="M:Dynastream.Fit.SegmentLeaderboardEntryMesg.GetActivityIdString">
+            <summary>      
+             Retrieves the ActivityIdString field
+             Comment: String version of the activity_id. 21 characters long, express in decimal</summary>
+             <returns>Returns byte[] representing the ActivityIdString field</returns>      
+        </member>
+        <member name="M:Dynastream.Fit.SegmentLeaderboardEntryMesg.SetActivityIdString(System.Byte[])">
+            <summary>        
+            Set ActivityIdString field
+            Comment: String version of the activity_id. 21 characters long, express in decimal</summary>
+            <param name="activityIdString_">field value to be set</param>      
         </member>
         <member name="T:Dynastream.Fit.SegmentPointMesg">
             <summary>

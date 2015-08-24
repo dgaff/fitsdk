@@ -28,14 +28,14 @@ int main(int argc, char* argv[])
       FIT_CONVERT_STATE state;
    #endif
 
-   printf("Testing file conversion using %s file...\n", argv[1]); 
+   printf("Testing file conversion using %s file...\n", argv[1]);
 
    #if defined(FIT_CONVERT_MULTI_THREAD)
       FitConvert_Init(&state, FIT_TRUE);
    #else
       FitConvert_Init(FIT_TRUE);
    #endif
-   
+
    if((file = fopen(argv[1], "rb")) == NULL)
    {
       printf("Error opening file %s.\n", argv[1]);
@@ -68,29 +68,29 @@ int main(int argc, char* argv[])
                   const FIT_UINT8 *mesg = FitConvert_GetMessageData();
                   FIT_UINT16 mesg_num = FitConvert_GetMessageNumber();
                #endif
-               
-               printf("Mesg %d (%d) - ", mesg_index++, mesg_num); 
-               
+
+               printf("Mesg %d (%d) - ", mesg_index++, mesg_num);
+
                switch(mesg_num)
                {
                   case FIT_MESG_NUM_FILE_ID:
                   {
                      const FIT_FILE_ID_MESG *id = (FIT_FILE_ID_MESG *) mesg;
-                     printf("File ID: type=%u, number=%u\n", id->type, id->number); 
+                     printf("File ID: type=%u, number=%u\n", id->type, id->number);
                      break;
                   }
 
                   case FIT_MESG_NUM_USER_PROFILE:
                   {
                      const FIT_USER_PROFILE_MESG *user_profile = (FIT_USER_PROFILE_MESG *) mesg;
-                     printf("User Profile: weight=%0.1fkg\n", user_profile->weight / 10.0f); 
+                     printf("User Profile: weight=%0.1fkg\n", user_profile->weight / 10.0f);
                      break;
                   }
 
                   case FIT_MESG_NUM_ACTIVITY:
                   {
                      const FIT_ACTIVITY_MESG *activity = (FIT_ACTIVITY_MESG *) mesg;
-                     printf("Activity: timestamp=%u, type=%u, event=%u, event_type=%u, num_sessions=%u\n", activity->timestamp, activity->type, activity->event, activity->event_type, activity->num_sessions); 
+                     printf("Activity: timestamp=%u, type=%u, event=%u, event_type=%u, num_sessions=%u\n", activity->timestamp, activity->type, activity->event, activity->event_type, activity->num_sessions);
                      {
                         FIT_ACTIVITY_MESG old_mesg;
                         old_mesg.num_sessions = 1;
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
                         #else
                            FitConvert_RestoreFields(&old_mesg);
                         #endif
-                        printf("Restored num_sessions=1 - Activity: timestamp=%u, type=%u, event=%u, event_type=%u, num_sessions=%u\n", activity->timestamp, activity->type, activity->event, activity->event_type, activity->num_sessions); 
+                        printf("Restored num_sessions=1 - Activity: timestamp=%u, type=%u, event=%u, event_type=%u, num_sessions=%u\n", activity->timestamp, activity->type, activity->event, activity->event_type, activity->num_sessions);
                      }
                      break;
                   }
@@ -107,23 +107,23 @@ int main(int argc, char* argv[])
                   case FIT_MESG_NUM_SESSION:
                   {
                      const FIT_SESSION_MESG *session = (FIT_SESSION_MESG *) mesg;
-                     printf("Session: timestamp=%u\n", session->timestamp); 
+                     printf("Session: timestamp=%u\n", session->timestamp);
                      break;
                   }
 
                   case FIT_MESG_NUM_LAP:
                   {
                      const FIT_LAP_MESG *lap = (FIT_LAP_MESG *) mesg;
-                     printf("Lap: timestamp=%u\n", lap->timestamp); 
+                     printf("Lap: timestamp=%u\n", lap->timestamp);
                      break;
                   }
 
                   case FIT_MESG_NUM_RECORD:
                   {
                      const FIT_RECORD_MESG *record = (FIT_RECORD_MESG *) mesg;
-                     
+
                      printf("Record: timestamp=%u", record->timestamp);
-                     
+
                      if (
                            (record->compressed_speed_distance[0] != FIT_BYTE_INVALID) ||
                            (record->compressed_speed_distance[1] != FIT_BYTE_INVALID) ||
@@ -134,10 +134,10 @@ int main(int argc, char* argv[])
                         static FIT_UINT32 last_distance16 = 0;
                         FIT_UINT16 speed100;
                         FIT_UINT32 distance16;
-                        
+
                         speed100 = record->compressed_speed_distance[0] | ((record->compressed_speed_distance[1] & 0x0F) << 8);
                         printf(", speed = %0.2fm/s", speed100/100.0f);
-                     
+
                         distance16 = (record->compressed_speed_distance[1] >> 4) | (record->compressed_speed_distance[2] << 4);
                         accumulated_distance16 += (distance16 - last_distance16) & 0x0FFF;
                         last_distance16 = distance16;
@@ -148,21 +148,21 @@ int main(int argc, char* argv[])
                      printf("\n");
                      break;
                   }
-                  
+
                   case FIT_MESG_NUM_EVENT:
                   {
                      const FIT_EVENT_MESG *event = (FIT_EVENT_MESG *) mesg;
-                     printf("Event: timestamp=%u\n", event->timestamp); 
+                     printf("Event: timestamp=%u\n", event->timestamp);
                      break;
                   }
 
                   case FIT_MESG_NUM_DEVICE_INFO:
                   {
                      const FIT_DEVICE_INFO_MESG *device_info = (FIT_DEVICE_INFO_MESG *) mesg;
-                     printf("Device Info: timestamp=%u\n", device_info->timestamp); 
+                     printf("Device Info: timestamp=%u\n", device_info->timestamp);
                      break;
                   }
-                  
+
                   default:
                     printf("Unknown\n");
                     break;
@@ -190,6 +190,13 @@ int main(int argc, char* argv[])
       return 1;
    }
 
+   if (convert_return == FIT_CONVERT_DATA_TYPE_NOT_SUPPORTED)
+   {
+      printf("File is not FIT.\n");
+      fclose(file);
+      return 1;
+   }
+
    if (convert_return == FIT_CONVERT_PROTOCOL_VERSION_NOT_SUPPORTED)
    {
       printf("Protocol version not supported.\n");
@@ -201,6 +208,6 @@ int main(int argc, char* argv[])
       printf("File converted successfully.\n");
 
    fclose(file);
-   
+
    return 0;
 }

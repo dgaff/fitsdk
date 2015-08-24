@@ -27,17 +27,15 @@
 		114D35DA1B8AA6030068D720 /* fit_unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 114D35BB1B8AA6030068D720 /* fit_unicode.cpp */; };
 		114D35DB1B8AA6030068D720 /* fit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 114D35C71B8AA6030068D720 /* fit.cpp */; };
 		114D35DD1B8AA6CE0068D720 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 114D35DC1B8AA6CE0068D720 /* main.cpp */; };
-		114D35DF1B8AA7D60068D720 /* fitconvert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 114D35321B8AA4E30068D720 /* fitconvert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		114D35301B8AA4E30068D720 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
-			dstPath = "${PROJECT_DIR}";
+			dstPath = "";
 			dstSubfolderSpec = 0;
 			files = (
-				114D35DF1B8AA7D60068D720 /* fitconvert in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

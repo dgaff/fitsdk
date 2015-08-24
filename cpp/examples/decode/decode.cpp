@@ -203,8 +203,7 @@ int main(int argc, char* argv[])
 
    if (!decode.CheckIntegrity(file))
    {
-      printf("FIT file integrity failed.\n");
-      return -1;
+      printf("FIT file integrity failed.\nAttempting to decode...\n");
    }
 
    mesgBroadcaster.AddListener((fit::FileIdMesgListener &)listener);

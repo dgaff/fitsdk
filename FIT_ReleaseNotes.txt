@@ -1,5 +1,18 @@
 FIT SDK External Release Notes
 
+16.00
+-Use STD INT define by default in C++ SDK when compiled for APPLE
+-Improve error mesg when attempting to decode non .FIT files
+-Update garmin_product enum
+-Add support for MesgDefinitionListener interface to Java MesgBroadcaster
+-Add means to unsubscribe C++ listeners
+-Improve java encode performance by removing unnecessary call to File.length() 
+-CSVTool now generates UTF-8 output.  Fix issue where CSVTool converts large numeric strings to scientific notation
+
+15.21
+-Add activity_id_string to segment_leaderboard_entry
+-Add leader_activity_id_string to segment file
+
 15.20
 -Profile updates (segment_leaderboard_type and segment_selection_type
 -Fixed bug where float32 and float64 field sizes were being set incorrectly in C and Java SDK
