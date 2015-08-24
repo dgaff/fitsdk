@@ -1,0 +1,168 @@
+FIT SDK External Release Notes
+
+15.20
+-Profile updates (segment_leaderboard_type and segment_selection_type
+-Fixed bug where float32 and float64 field sizes were being set incorrectly in C and Java SDK
+-Add means to unsubscribe Java listeners
+-Add FIT timestamp functions to C++
+-Add fractional time support to C#, set kind member in GetDateTime()
+-Java tool build errors are now output to the Fitgen console
+-Fixed incorrect file types in some example files (workout, weight scale)
+
+15.10
+-Libc compatibility change to C++ decoder
+-Profile updates to manufacturer_id
+-Java tools report SDK version
+-Update Profile.xls to .xlsx and remove unneeded hidden sheets
+-Add BufferedMesgBroadcaster/Plugin framework to C++ SDK
+-Fit.dll reports SDK version in properties
+-Update C# SDK to support .NET framework 4.0 and on
+
+15.00
+-Profile updates (garmin_product, manufacturer, bike_profile mesg, event mesg, segments)
+-Tidied up EXAMPLE config
+-Removed unnecessary default scale and offset values from profile
+
+14.20
+-Profile updates (LEV additions)
+-Fixed regression in Java component expansion (multiple components with the same destination field again generate (accumulated) array elements in the destination) 
+
+
+14.10
+-Fix java fractional timestamp issue that could cause loss of precision
+-Fix decode support for incomplete streams
+-Trimmed default C "EXAMPLE" product configuration so no messages are too large
+-Added example monitoring files
+-Profile updates (mftr ids, garmin_product enum)
+
+14.00
+-Added Cycling Dynamics
+-Added support for 'enhanced' speed and altitude
+-Added support for multilevel component expansion
+-Updated code examples to demonstrate local_id usage0
+-Other profile Changes
+
+13.20
+-Added fractional time component to Java timestamp
+-Reserved file types 247-254 for manufacturer defined file types
+-Profile Changes
+
+13.10
+-Fix bug in C GetFileMesgOffset()
+-Profile changes
+
+13.00
+-Profile changes
+
+12.20
+-Updated the CSV files in examples directory to agree with their corresponding FIT file
+
+12.10
+-Profile changes
+
+12.00
+-Profile changes
+-Monitoring Reader bugfixes
+
+11.20
+-Profile changes
+-New support for monitoring files (monitoring mesg fields, monitoring reader support class and 
+monitoring a&b file documentation)
+
+11.00
+-Profile changes
+-Added Gear Indication support
+-Add support for components in subfields (Java, C#, C++)
+
+10.20
+-Profile changes
+-Added command line option so FitGen may report its version without generating code
+
+10.10
+-Profile changes
+-Updated C# Decode example to use access functions rather than directly use internal members
+-Fixed C generator issue when using file structures without padding
+
+10.02
+-Profile changes
+
+10.00
+-Updated FIT Protocol Doc
+-Added 'memo_glob' for encoding large utf-8 blocks.  See new AN18 for details.  
+-Profile changes
+
+9.20
+-Profile Changes
+-Allow setting subfields if reference field is not already set
+-Renamed/reworked device_info.device_type field to better refect its intended usage
+
+9.11
+-Profile Changes
+
+9.10
+-Fixed issue with setting string fields in C#
+-Fixed issue in C# where IsFit() and CheckIntegrity() were throwing exceptions rather than returning false
+-Added MO2 Profile Fields
+-Profile Changes
+
+9.02
+-Fixed an issue where resource files were not being generated when a custom types.csv or mesgs.csv is used
+
+9.00
+-Profile Changes
+
+8.20
+-Profile Changes 
+
+8.10
+-Profile Changes 
+-Fixed issue where Java decoder was not preserving the type of unknown fields
+
+8.00
+-Add check that mesg_index is valid in Fit_GetFileMesgOffset()
+-Profile Changes
+
+7.10
+-Profile Changes
+
+7.01
+-Fixed truncation issue with some scaled fields in Java/C++
+-Removed record.cadence reference to cadence256 
+
+7.00
+-Added missing monitoring fields described in File Types Doc
+-Other profile changes
+-Accumulated fields improvements (Java): 
+   Multiple compression fields can now accumulate into the same destination field
+   Explicitly logging the accumulated field updates the accumulated value
+-Fixed FitGen crash if custom types/mesgs files are locked
+-Add FIT ProtocolVersion compatability check to C# decoder
+
+6.20
+-Profile Changes
+-Fixed discrepancy between binary and ascii in example activity file
+
+
+6.10
+-Profile Changes
+-Fix Encoding of ProtocolVersion under C#
+-Rearranged Java mesg templates to avoid 64k static size boundary
+-Fixed issue where software and slave_device messages were incorrectly merged
+
+
+6.00
+-Documentation Update
+-Profile Changes
+
+5.20
+-Expose Java getByValue method
+-Revise CSV tool message filtering interface
+
+5.10
+-Profile Changes
+-Increase default value for FIT_LOCAL_MESGS (affects C demo apps)
+
+5.00
+-Added C# SDK (Library + Examples)
+-Profile Changes
+-Fixed issue where Profile enum elements starting with a digit wouldn't generate correctly
