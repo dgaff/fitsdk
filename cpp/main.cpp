@@ -211,7 +211,7 @@ int main(int argc, char* argv[])
    mesgBroadcaster.AddListener((fit::UserProfileMesgListener &)listener);
    mesgBroadcaster.AddListener((fit::MonitoringMesgListener &)listener);
    mesgBroadcaster.AddListener((fit::DeviceInfoMesgListener &)listener);
-   //mesgBroadcaster.AddListener((fit::MesgListener &)listener);
+   mesgBroadcaster.AddListener((fit::MesgListener &)listener);
 
    try
    {

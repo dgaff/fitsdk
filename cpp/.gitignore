@@ -26,3 +26,11 @@
 *.exe
 *.out
 *.app
+
+# xcode stuff
+xcuserdata
+xcshareddata
+
+# project stuff
+fitconvert
+testfiles
